@@ -1,0 +1,34 @@
+#circunferencia-input {
+    --background: #ffffff;
+    /* Fondo gris claro */
+    --placeholder-color: #999999;
+    /* Color del placeholder */
+    --color: #333333;
+    /* Color del texto */
+    --highlight-background: transparent;
+    /* Fondo transparente cuando está enfocado */
+    --highlight-color-focused: #3b9cf1;
+    /* Color del borde cuando está enfocado */
+    --highlight-background-focused: #ffffff;
+    /* Fondo cuando está enfocado */
+    --border-color: #000000;
+    /* Color del borde */
+}
+
+ion-item {
+    --border-color: transparent;
+    /* Color del borde del item para evitar la doble raya */
+}
+
+ion-item-divider {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-size: 15px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    text-align: center;
+}
+.bold-label {
+    font-weight: bold;
+  }
+  

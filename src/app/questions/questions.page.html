@@ -1,0 +1,142 @@
+<ion-header [translucent]="true"> <ion-toolbar> <ion-buttons slot="start"> <ion-back-button defaultHref="/home"></ion-back-button> <!-- Botón de regreso con destino predeterminado --> </ion-buttons> <ion-title>Evaluación de Riesgo</ion-title> <!-- Título de la página --> </ion-toolbar> </ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">questions</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--Todas las preguntas en una sola tarjeta-->
+  <ion-card>
+    <ion-card-header style="text-align: center;">
+      <ion-card-title class="bold-label" style="font-size: 30px;">Evaluación de Riesgo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!--Pregunta 1-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 1: Seleccione su Sexo</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-segment>
+          <ion-segment-button value="male">
+            <ion-label>Masculino</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="female">
+            <ion-label>Femenino</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+
+      <!--Espacio para separar las preguntas-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 2: Ingrese su Circunferencia Abdominal</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-input id="circunferencia-input" label="Ingrese su circunferencia abdominal" type="number"
+          label-placement="floating" placeholder="0cm" [counter]="true" maxlength="3"></ion-input>
+      </ion-item>
+
+      <!--Pregunta 3-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">
+          Pregunta 3: Ingrese su Edad
+        </ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-input type="number" placeholder="Ingrese su edad" [counter]="true" maxlength="3"></ion-input>
+      </ion-item>
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 4: Ingrese su Peso</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-input type="number" placeholder="0kg" [counter]="true" maxlength="3" label-placement="floating"
+          label="Ingrese su peso"></ion-input>
+      </ion-item>
+      <!--Pregunta 5-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 5: Ingrese su Altura</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-input type="number" placeholder="0 cm" [counter]="true" maxlength="3" label-placement="floating"
+          label="Ingrese su altura"></ion-input>
+      </ion-item>
+      <!--Pregunta 6-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 6: Antecedentes Familiares</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label class="label-text">
+          (Diabetes, dislipidemias, Hipertensión, insuficiencia renal)
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-segment>
+          <ion-segment-button value="yes">
+            <ion-label>Sí</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="no">
+            <ion-label>No</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+      <ion-item>
+        <ion-text color="medium">Sí: Riesgo cardiovascular.</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text color="medium">No: No Riesgo</ion-text>
+      </ion-item>
+
+      <!--Pregunta 7-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 7: Ejercicio Regular</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>(mínimo 3 horas por semana)</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-segment>
+          <ion-segment-button>
+            <ion-label>Sí</ion-label>
+          </ion-segment-button>
+          <ion-segment-button>
+            <ion-label>No</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+
+      <!--Pregunta 8-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 8: Fuma</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-segment>
+          <ion-segment-button>
+            <ion-label>Sí</ion-label>
+          </ion-segment-button>
+          <ion-segment-button>
+            <ion-label>No</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+
+      <!--Pregunta 9-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 9: Consumo de agua</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-text color="medium">Por lo menos 1.5 litros de agua al día</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-segment>
+          <ion-segment-button value="Si">
+            <ion-label>Si</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="No">
+            <ion-label>No</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
