@@ -1,41 +1,110 @@
 <ion-header [translucent]="true"> <ion-toolbar> <ion-buttons slot="start"> <ion-back-button defaultHref="/home"></ion-back-button> <!-- Botón de regreso con destino predeterminado --> </ion-buttons> <ion-title>Evaluación de Riesgo</ion-title> <!-- Título de la página --> </ion-toolbar> </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">questions</ion-title>
+  <form [formGroup]="personForm" (ngSubmit)="registerData()">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">questions</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <!--Todas las preguntas dentro del formulario reactivo-->
   <!--Todas las preguntas en una sola tarjeta-->
   <ion-card>
     <ion-card-header style="text-align: center;">
       <ion-card-title class="bold-label" style="font-size: 30px;">Evaluación de Riesgo</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+
+      <!--Entrada sobre le nombre completo-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Ingrese su nombre completo</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-input
+          formControlName="name"
+          id="name"
+          label="Nombre completo"
+          type="text"
+          label-placement="floating"
+          placeholder="Respuesta"
+          maxlength="50"
+          [counter]="true">
+        </ion-input>
+      </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('name')">
+        <ion-text
+        color="danger">
+        {{getMessageError('name')}}
+      </ion-text>
+    </ion-item>
+
+      <!--Ingreso sobre la carrera-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Ingrese su Carrera</ion-label>
+      </ion-item-divider>
+        <ion-item>
+          <ion-input
+            FormControlName="race"
+            id="race"
+            label="Carrera"
+            type="text"
+            label-placement="floating"
+            placeholder="Respuesta"
+            maxlength="50"
+            [counter]="true">
+        </ion-input>
+      </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('race')">
+        <ion-text
+          color="danger">
+           {{getMessageError('race')}}
+        </ion-text>
+     </ion-item>
+
       <!--Pregunta 1-->
       <ion-item-divider color="light">
         <ion-label class="bold-label">Pregunta 1: Seleccione su Sexo</ion-label>
       </ion-item-divider>
       <ion-item>
-        <ion-segment>
-          <ion-segment-button value="male">
-            <ion-label>Masculino</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="female">
-            <ion-label>Femenino</ion-label>
-          </ion-segment-button>
-        </ion-segment>
+        <ion-segment
+          formControlName="genere"
+          id="genere">
+            <ion-segment-button value="male">
+              <ion-label>Masculino</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="female">
+              <ion-label>Femenino</ion-label>
+            </ion-segment-button>
+          </ion-segment>
       </ion-item>
 
-      <!--Espacio para separar las preguntas-->
+      <!--Pregunta 2-->
       <ion-item-divider color="light">
         <ion-label class="bold-label">Pregunta 2: Ingrese su Circunferencia Abdominal</ion-label>
       </ion-item-divider>
       <ion-item>
-        <ion-input id="circunferencia-input" label="Ingrese su circunferencia abdominal" type="number"
-          label-placement="floating" placeholder="0cm" [counter]="true" maxlength="3"></ion-input>
+        <ion-input
+          formControlName="abdominalCircumference"
+          id="abdominalC"
+          label="Circunferencia abdominal"
+          type="number"
+          label-placement="floating"
+          placeholder="0cm" [counter]="true"
+          maxlength="3"></ion-input>
       </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('abdominalCircumference')">
+        <ion-text
+          color="danger">
+           {{getMessageError('abdominalCircumference')}}
+        </ion-text>
+     </ion-item>
 
       <!--Pregunta 3-->
       <ion-item-divider color="light">
@@ -44,23 +113,75 @@
         </ion-label>
       </ion-item-divider>
       <ion-item>
-        <ion-input type="number" placeholder="Ingrese su edad" [counter]="true" maxlength="3"></ion-input>
+        <ion-input
+          formControlName="age"
+          id="age"
+          label="Edad"
+          type="number"
+          placeholder="Respuesta"
+          labelPlacement="floating"
+          maxlength="3"
+          [counter]="true">
+        </ion-input>
       </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('age')">
+        <ion-text
+          color="danger">
+           {{getMessageError('age')}}
+        </ion-text>
+     </ion-item>
+
+      <!--Pregunta 4-->
       <ion-item-divider color="light">
         <ion-label class="bold-label">Pregunta 4: Ingrese su Peso</ion-label>
       </ion-item-divider>
       <ion-item>
-        <ion-input type="number" placeholder="0kg" [counter]="true" maxlength="3" label-placement="floating"
-          label="Ingrese su peso"></ion-input>
+        <ion-input
+          formControlName="weight"
+          id="weight"
+          type="number"
+          placeholder="0kg"
+          [counter]="true"
+          maxlength="3"
+          label-placement="floating"
+          label="Ingrese su peso">
+        </ion-input>
       </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('weight')">
+        <ion-text
+          color="danger">
+           {{getMessageError('weight')}}
+        </ion-text>
+     </ion-item>
+
       <!--Pregunta 5-->
       <ion-item-divider color="light">
         <ion-label class="bold-label">Pregunta 5: Ingrese su Altura</ion-label>
       </ion-item-divider>
       <ion-item>
-        <ion-input type="number" placeholder="0 cm" [counter]="true" maxlength="3" label-placement="floating"
+        <ion-input
+          formControlName="height"
+          id="height"
+          type="number"
+          placeholder="0.cm"
+          [counter]="true"
+          maxlength="3"
+          label-placement="floating"
           label="Ingrese su altura"></ion-input>
       </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('height')">
+        <ion-text
+          color="danger">
+           {{getMessageError('height')}}
+        </ion-text>
+     </ion-item>
+
       <!--Pregunta 6-->
       <ion-item-divider color="light">
         <ion-label class="bold-label">Pregunta 6: Antecedentes Familiares</ion-label>
@@ -71,7 +192,9 @@
         </ion-label>
       </ion-item>
       <ion-item>
-        <ion-segment>
+        <ion-segment
+          formControlName="antecedentFamily"
+          id="antecendentFamily">
           <ion-segment-button value="yes">
             <ion-label>Sí</ion-label>
           </ion-segment-button>
@@ -95,11 +218,13 @@
         <ion-label>(mínimo 3 horas por semana)</ion-label>
       </ion-item>
       <ion-item>
-        <ion-segment>
-          <ion-segment-button>
+        <ion-segment
+          formControlName="regularTraining"
+          id="regularTraining">
+          <ion-segment-button value="yes">
             <ion-label>Sí</ion-label>
           </ion-segment-button>
-          <ion-segment-button>
+          <ion-segment-button value="no">
             <ion-label>No</ion-label>
           </ion-segment-button>
         </ion-segment>
@@ -110,11 +235,13 @@
         <ion-label class="bold-label">Pregunta 8: Fuma</ion-label>
       </ion-item-divider>
       <ion-item>
-        <ion-segment>
-          <ion-segment-button>
+        <ion-segment
+          formControlName="smoke"
+          id="smoke">
+          <ion-segment-button value="yes">
             <ion-label>Sí</ion-label>
           </ion-segment-button>
-          <ion-segment-button>
+          <ion-segment-button value="no">
             <ion-label>No</ion-label>
           </ion-segment-button>
         </ion-segment>
@@ -128,15 +255,30 @@
         <ion-text color="medium">Por lo menos 1.5 litros de agua al día</ion-text>
       </ion-item>
       <ion-item>
-        <ion-segment>
-          <ion-segment-button value="Si">
+        <ion-segment
+          formControlName="consumptionWater"
+          id="consumptionWater">
+          <ion-segment-button value="yes">
             <ion-label>Si</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="No">
+          <ion-segment-button value="no">
             <ion-label>No</ion-label>
           </ion-segment-button>
         </ion-segment>
       </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="register">
+        <ion-text
+        color="danger">
+          Ingrese los datos faltantes
+        </ion-text>
+      </ion-item>
+
+    <!--Boton de acción del formulario-->
+        <ion-button  type="submit" expand="block" class="ion-margin-top">Registrar</ion-button>
+
     </ion-card-content>
   </ion-card>
+</form>
 </ion-content>
