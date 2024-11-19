@@ -1,0 +1,36 @@
+.custom-alert-content {
+  padding: 20px;
+}
+
+.alert-image {
+  max-width: 150px;
+  margin: 0 auto 20px;
+}
+
+.alert-message {
+  font-size: 18px;
+  color: #d32f2f; /* Rojo oscuro */
+  font-weight: bold;
+}
+
+.highlighted-message {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.ica-value {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.ica-number {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0288d1; /* Azul */
+}
+
+ion-button {
+  font-size: 16px;
+}
+

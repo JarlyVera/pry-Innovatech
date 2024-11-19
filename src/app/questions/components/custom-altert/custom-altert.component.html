@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>El índice de cintura-altura (ICA)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="custom-alert-content">
+    <!-- Imagen -->
+    <ion-row justify-content-center>
+      <ion-col size="12" class="ion-text-center">
+        <ion-img [src]="data.imageUrl" alt="Imagen de alerta" class="alert-image"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <!-- Audio -->
+    <ion-row justify-content-center *ngIf="validateComponentAudio()">
+      <ion-col size="12" class="ion-text-center">
+        <audio #audioElement class="alert-audio" (loadeddata)="playAudio()">
+          <source [src]="data.audio" type="audio/mpeg" />
+          Tu navegador no soporta la reproducción de audio.
+        </audio>
+      </ion-col>
+    </ion-row>
+
+    <!-- Mensaje -->
+    <ion-row justify-content-center>
+      <ion-col size="12" class="ion-text-center">
+        <p class="alert-message">
+          <ion-icon name="alert-circle-outline" color="danger" style="font-size: 24px; vertical-align: middle;"></ion-icon>
+          <span class="highlighted-message">{{ data.message }}</span>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <!-- ICA Actual -->
+    <ion-row justify-content-center>
+      <ion-col size="12" class="ion-text-center">
+        <p class="ica-value">
+          <strong>ICA Actual:</strong> <span class="ica-number"> {{data.ICA}}</span>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Botón -->
+    <ion-row justify-content-center>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button expand="block" color="secondary" shape="round" (click)="close()">Aceptar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
