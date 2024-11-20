@@ -16,55 +16,6 @@
     </ion-card-header>
     <ion-card-content>
 
-      <!--Entrada sobre le nombre completo-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">Ingrese su nombre completo</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-input
-          formControlName="name"
-          id="name"
-          label="Nombre completo"
-          type="text"
-          label-placement="floating"
-          placeholder="Respuesta"
-          maxlength="50"
-          [counter]="true">
-        </ion-input>
-      </ion-item>
-
-      <!--Mensaje de retroalimentación-->
-      <ion-item *ngIf="validatorField('name')">
-        <ion-text
-        color="danger">
-        {{getMessageError('name')}}
-      </ion-text>
-    </ion-item>
-
-      <!--Ingreso sobre la carrera-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">Ingrese su Carrera</ion-label>
-      </ion-item-divider>
-        <ion-item>
-          <ion-input
-            FormControlName="race"
-            id="race"
-            label="Carrera"
-            type="text"
-            label-placement="floating"
-            placeholder="Respuesta"
-            maxlength="50"
-            [counter]="true">
-        </ion-input>
-      </ion-item>
-
-      <!--Mensaje de retroalimentación-->
-      <ion-item *ngIf="validatorField('race')">
-        <ion-text
-          color="danger">
-           {{getMessageError('race')}}
-        </ion-text>
-     </ion-item>
 
       <!--Pregunta 1-->
       <ion-item-divider color="light">
@@ -106,58 +57,6 @@
         </ion-text>
      </ion-item>
 
-      <!--Pregunta 3-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">
-          Pregunta 3: Ingrese su Edad
-        </ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-input
-          formControlName="age"
-          id="age"
-          label="Edad"
-          type="number"
-          placeholder="Respuesta"
-          labelPlacement="floating"
-          maxlength="3"
-          [counter]="true">
-        </ion-input>
-      </ion-item>
-
-      <!--Mensaje de retroalimentación-->
-      <ion-item *ngIf="validatorField('age')">
-        <ion-text
-          color="danger">
-           {{getMessageError('age')}}
-        </ion-text>
-     </ion-item>
-
-      <!--Pregunta 4-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">Pregunta 4: Ingrese su Peso</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-input
-          formControlName="weight"
-          id="weight"
-          type="number"
-          placeholder="0kg"
-          [counter]="true"
-          maxlength="3"
-          label-placement="floating"
-          label="Ingrese su peso">
-        </ion-input>
-      </ion-item>
-
-      <!--Mensaje de retroalimentación-->
-      <ion-item *ngIf="validatorField('weight')">
-        <ion-text
-          color="danger">
-           {{getMessageError('weight')}}
-        </ion-text>
-     </ion-item>
-
       <!--Pregunta 5-->
       <ion-item-divider color="light">
         <ion-label class="bold-label">Pregunta 5: Ingrese su Altura</ion-label>
@@ -182,91 +81,6 @@
         </ion-text>
      </ion-item>
 
-      <!--Pregunta 6-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">Pregunta 6: Antecedentes Familiares</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-label class="label-text">
-          (Diabetes, dislipidemias, Hipertensión, insuficiencia renal)
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-segment
-          formControlName="antecedentFamily"
-          id="antecendentFamily">
-          <ion-segment-button value="yes">
-            <ion-label>Sí</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="no">
-            <ion-label>No</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-item>
-      <ion-item>
-        <ion-text color="medium">Sí: Riesgo cardiovascular.</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-text color="medium">No: No Riesgo</ion-text>
-      </ion-item>
-
-      <!--Pregunta 7-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">Pregunta 7: Ejercicio Regular</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-label>(mínimo 3 horas por semana)</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-segment
-          formControlName="regularTraining"
-          id="regularTraining">
-          <ion-segment-button value="yes">
-            <ion-label>Sí</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="no">
-            <ion-label>No</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-item>
-
-      <!--Pregunta 8-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">Pregunta 8: Fuma</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-segment
-          formControlName="smoke"
-          id="smoke">
-          <ion-segment-button value="yes">
-            <ion-label>Sí</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="no">
-            <ion-label>No</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-item>
-
-      <!--Pregunta 9-->
-      <ion-item-divider color="light">
-        <ion-label class="bold-label">Pregunta 9: Consumo de agua</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-text color="medium">Por lo menos 1.5 litros de agua al día</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-segment
-          formControlName="consumptionWater"
-          id="consumptionWater">
-          <ion-segment-button value="yes">
-            <ion-label>Si</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="no">
-            <ion-label>No</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-item>
-
       <!--Mensaje de retroalimentación-->
       <ion-item *ngIf="register">
         <ion-text
@@ -282,3 +96,4 @@
   </ion-card>
 </form>
 </ion-content>
+

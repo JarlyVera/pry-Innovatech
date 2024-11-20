@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [style.--background]="backgroundColor">
   <ion-grid class="custom-alert-content">
     <!-- Imagen -->
     <ion-row justify-content-center>
@@ -26,9 +26,19 @@
     <!-- Mensaje -->
     <ion-row justify-content-center>
       <ion-col size="12" class="ion-text-center">
-        <p class="alert-message">
-          <ion-icon name="alert-circle-outline" color="danger" style="font-size: 24px; vertical-align: middle;"></ion-icon>
+        <p [class]="alertClass">
+          <ion-icon name="alert-circle-outline" color="primary" class="custom-icon__alert"></ion-icon>
           <span class="highlighted-message">{{ data.message }}</span>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Mensaje -->
+    <ion-row justify-content-center>
+      <ion-col size="12" class="ion-text-center">
+        <p [class]="alertClass">
+          <ion-icon name="alert-circle-outline" color="primary" class="custom-icon__alert"></ion-icon>
+          <span class="highlighted-message"> {{danger}} </span>
         </p>
       </ion-col>
     </ion-row>
@@ -37,7 +47,7 @@
     <ion-row justify-content-center>
       <ion-col size="12" class="ion-text-center">
         <p class="ica-value">
-          <strong>ICA Actual:</strong> <span class="ica-number"> {{data.ICA}}</span>
+          <strong [class]="alertClass">ICA Actual:</strong> <span class="ica-number"> {{data.ICA}}</span>
         </p>
       </ion-col>
     </ion-row>

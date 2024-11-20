@@ -1,3 +1,11 @@
+:root {
+  --ion-color-danger: #cd8790;
+  --ion-color-primary: #3880ff;
+  --ion-color-secondary: #3dc2ff;
+  --ion-color-tertiary: #5260ff;
+  --ion-color-light: #edeef5;
+}
+
 .custom-alert-content {
   padding: 20px;
 }
@@ -11,6 +19,17 @@
   font-size: 18px;
   color: #d32f2f; /* Rojo oscuro */
   font-weight: bold;
+}
+
+.alert-message__white {
+  font-size: 18px;
+  color: white; /* Rojo oscuro */
+  font-weight: bold;
+}
+
+.custom-icon__alert{
+  font-size: 24px;
+  vertical-align: middle;
 }
 
 .highlighted-message {

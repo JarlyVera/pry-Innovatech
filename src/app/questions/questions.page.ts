@@ -13,6 +13,7 @@ export class QuestionsPage implements OnInit {
 
   public personForm: FormGroup;
   public register: boolean = false;
+
   // Son 12 campos de entrada
   constructor(
     private fb:FormBuilder,
@@ -20,8 +21,6 @@ export class QuestionsPage implements OnInit {
   ) {
     this.personForm = this.fb.group(
       {
-        name: ['',[Validators.required, Validators.maxLength(50)]],
-        race: ['',[Validators.maxLength(50)]],
         genere: ["male", [Validators.required]],
         abdominalCircumference:[
           '',
@@ -31,24 +30,6 @@ export class QuestionsPage implements OnInit {
              Validators.pattern(/^\d+(\.\d{1,2})?$/)
           ]
         ], //Enteros y decimales
-        age: [
-          '',
-          [
-            Validators.required,
-            Validators.max(150),
-            Validators.pattern(/^\d+$/),
-            Validators.min(1)
-          ]
-        ], //Solo valores enteros
-        weight: [
-          '',
-          [
-            Validators.required,
-            Validators.max(999),
-            Validators.pattern(/^\d+(\.\d{1,2})?$/),
-            Validators.min(1)
-          ]
-        ],
         height: [
           '',
           [
@@ -58,41 +39,18 @@ export class QuestionsPage implements OnInit {
             Validators.min(1)
           ]
         ],
-        antecedentFamily: [
-          "yes",
-          [
-            Validators.required
-          ]
-        ],
-        regularTraining: [
-          "yes",
-          [
-            Validators.required
-          ]
-        ],
-        smoke: [
-          "no",
-          [
-            Validators.required
-          ]
-        ],
-        consumptionWater: [
-          "yes",
-          [
-            Validators.required
-          ]
-        ]
       }
     )
 
   }
 
   ngOnInit() {
+    this.register = false;
   }
-
 
   //Condición para mostrar el mensaje de error
   public validatorField(field: string): boolean | null{
+    this.register = false;
    return this.personForm.controls[field].errors && this.personForm.controls[field].touched;
   }
 
@@ -178,7 +136,7 @@ export class QuestionsPage implements OnInit {
           levelICA = this.validateGenreFemale(ICA);
         }
 
-        if(levelICA === 'Delgadez severa' || levelICA === 'Obesidad mórbida'){
+        if(levelICA === 'Delgadez severa' || levelICA === 'Obesidad morbida'){
           return {message: levelICA, imageUrl:'../../assets/images/ic-red.png', audio:'../../assets/audio/sn_alarma.mp3', ICA: ICA};
         }else if(levelICA === 'Delgadez leve' ||levelICA === 'Sobrepeso' || levelICA === 'Sobrepeso elevado'){
           return {message: levelICA, imageUrl: '../../assets/images/ic-yellow.png', ICA: ICA};
@@ -222,9 +180,9 @@ export class QuestionsPage implements OnInit {
   //Registrar los datos del formulario
   public async registerData(): Promise<void>{
       const genere: string = this.personForm.get('genere')!.value;
+      await this.viewAlert(genere);
     if(this.personForm.valid){
       this.register = false;
-      await this.viewAlert(genere);
       this.cleanFormulary();
     }else{
       //Marcar a todos como tocados
