@@ -1,0 +1,99 @@
+<ion-header [translucent]="true"> <ion-toolbar> <ion-buttons slot="start"> <ion-back-button defaultHref="/home"></ion-back-button> <!-- Botón de regreso con destino predeterminado --> </ion-buttons> <ion-title>Evaluación de Riesgo</ion-title> <!-- Título de la página --> </ion-toolbar> </ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="personForm" (ngSubmit)="registerData()">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">questions</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--Todas las preguntas dentro del formulario reactivo-->
+  <!--Todas las preguntas en una sola tarjeta-->
+  <ion-card>
+    <ion-card-header style="text-align: center;">
+      <ion-card-title class="bold-label" style="font-size: 30px;">Evaluación de Riesgo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+
+      <!--Pregunta 1-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 1: Seleccione su Sexo</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-segment
+          formControlName="genere"
+          id="genere">
+            <ion-segment-button value="male">
+              <ion-label>Masculino</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="female">
+              <ion-label>Femenino</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+      </ion-item>
+
+      <!--Pregunta 2-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 2: Ingrese su Circunferencia Abdominal</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-input
+          formControlName="abdominalCircumference"
+          id="abdominalC"
+          label="Circunferencia abdominal"
+          type="number"
+          label-placement="floating"
+          placeholder="0cm" [counter]="true"
+          maxlength="3"></ion-input>
+      </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('abdominalCircumference')">
+        <ion-text
+          color="danger">
+           {{getMessageError('abdominalCircumference')}}
+        </ion-text>
+     </ion-item>
+
+      <!--Pregunta 5-->
+      <ion-item-divider color="light">
+        <ion-label class="bold-label">Pregunta 5: Ingrese su Altura</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-input
+          formControlName="height"
+          id="height"
+          type="number"
+          placeholder="0.cm"
+          [counter]="true"
+          maxlength="3"
+          label-placement="floating"
+          label="Ingrese su altura"></ion-input>
+      </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="validatorField('height')">
+        <ion-text
+          color="danger">
+           {{getMessageError('height')}}
+        </ion-text>
+     </ion-item>
+
+      <!--Mensaje de retroalimentación-->
+      <ion-item *ngIf="register">
+        <ion-text
+        color="danger">
+          Ingrese los datos faltantes
+        </ion-text>
+      </ion-item>
+
+    <!--Boton de acción del formulario-->
+        <ion-button  type="submit" expand="block" class="ion-margin-top">Registrar</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</form>
+</ion-content>
+
